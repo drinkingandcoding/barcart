@@ -3,6 +3,7 @@
 import yargs from 'yargs'
 import make from './make';
 import random from './random';
+const log = console.log;
 
 const argv = yargs
   .command('make', 'Learn how to make a cocktail of your choice', {
@@ -32,16 +33,14 @@ if (argv._.includes('make')) {
     //check if two word cocktail
     if(argv._[2]) {
       drinkInput = `${drinkInput} ${argv._[2]}`;
-    };
+    }
 
     recipe = make(drinkInput);
   } else { // Get a random cocktail
-    let randomPick = random();
+    const randomPick = random();
     recipe = make(randomPick);
   }
-
-  console.log(recipe);
 }
 
-console.log('All of the args', argv);
+log('All of the args', argv);
 

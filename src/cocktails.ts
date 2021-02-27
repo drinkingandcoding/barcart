@@ -1,4 +1,4 @@
-[
+export const data = [
   { "name": "Vesper",
     "glass": "martini",
     "category": "Before Dinner Cocktail",
