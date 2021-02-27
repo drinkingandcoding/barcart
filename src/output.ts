@@ -27,7 +27,15 @@ const output = (result: Result) => {
   
   // List ingredients
   log('2. Mix together:');
-  result.ingredients?.map(x => console.log(`   ${x.amount}${x.unit} of ${x.ingredient}`));
+  const spacer = '    - ';
+  result.ingredients?.map(x => {
+    if(x.unit) {
+      console.log(`${spacer}${x.amount}${x.unit} of ${x.ingredient}`);
+    }
+    if(x.special) {
+      console.log(`${spacer}${x.special}`);
+    }
+  });
 
   // Preparation
   log(`3. ${result.preparation}`);
@@ -36,7 +44,7 @@ const output = (result: Result) => {
   result.garnish && log(`4. Garnish: ${result.garnish?.toLowerCase()}`);
 
   // Finish
-  log('5. Drink up 🥃')
+  log('5. Drink up 🥃');
 }
 
 export default output;

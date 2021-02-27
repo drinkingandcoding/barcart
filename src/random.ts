@@ -1,7 +1,13 @@
-const random = () => {
-  console.log('Picking random cocktail');
+import { data } from './cocktails';
+import output from './output';
 
-  return 'This is the random cocktail object';
+const getRandomInt = () => {
+  return Math.floor(Math.random() * Math.floor(data.length));
+}
+
+const random = () => {
+  console.log('Picking a random cocktail for you!');
+  output(data[getRandomInt()]);
 };
 
 export default random;

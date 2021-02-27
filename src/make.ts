@@ -1,5 +1,6 @@
 import { data } from './cocktails';
 import output from './output';
+const log = console.log;
 
 const make = (input: string) => {
 
@@ -9,7 +10,7 @@ const make = (input: string) => {
   if(item) {
     output(item);
   } else {
-    return 'Oops, something went wrong';
+    log("I don't know that one 😭");
   }
 };
 

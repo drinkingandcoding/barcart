@@ -25,8 +25,6 @@ const argv = yargs
 // Find a cocktail
 if (argv._.includes('make')) {
 
-  let recipe;
-
   if(!argv.r) { // Not random, User inputted name
     let drinkInput = `${argv._[1]}`;
 
@@ -35,12 +33,10 @@ if (argv._.includes('make')) {
       drinkInput = `${drinkInput} ${argv._[2]}`;
     }
 
-    recipe = make(drinkInput);
+    make(drinkInput);
   } else { // Get a random cocktail
-    const randomPick = random();
-    recipe = make(randomPick);
+    random();
   }
 }
 
-log('All of the args', argv);
-
+// log('All of the args', argv);
