@@ -1,7 +1,7 @@
 const random = () => {
-    console.log('Picking random cocktail');
+  console.log('Picking random cocktail');
 
-    return 'This is the random cocktail object';
+  return 'This is the random cocktail object';
 };
 
 export default random;
