@@ -11,7 +11,7 @@
     "lint:fix": "eslint . --ext .ts --fix"
   },
   "bin": {
-    "barcart-prod": "./lib/index.js"
+    "barcart": "./lib/index.js"
   },
   "repository": {
     "type": "git",
