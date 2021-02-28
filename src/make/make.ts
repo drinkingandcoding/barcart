@@ -1,4 +1,4 @@
-import { data } from './cocktails';
+import { data } from '../cocktails';
 import output from './output';
 const log = console.log;
 

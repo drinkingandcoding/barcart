@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
 import yargs from 'yargs'
-import make from './make';
-import random from './random';
+import make from './make/make';
+import random from './make/random';
 const log = console.log;
 
 const argv = yargs
   .command('make', 'Learn how to make a cocktail of your choice', {
     cocktail: {
       description: 'the cocktail to search for',
-      alias: 'y',
+      alias: 'm',
       type: 'string',
     }
   })
@@ -18,11 +18,23 @@ const argv = yargs
     description: 'Make a random cocktail',
     type: 'boolean',
   })
+  .command('find', 'Find cocktails by attribute', {
+    cocktail: {
+      description: 'the cocktail to search for',
+      alias: 'f',
+      type: 'string',
+    }
+  })
+  .option('glass', {
+    alias: 'g',
+    description: 'find a cocktail by glassware',
+    type: 'string',
+  })
   .help()
   .alias('help', 'h')
   .argv;
 
-// Find a cocktail
+// Make a cocktail
 if (argv._.includes('make')) {
 
   if(!argv.r) { // Not random, User inputted name
@@ -38,5 +50,14 @@ if (argv._.includes('make')) {
     random();
   }
 }
+
+if(argv._.includes('find')) {
+  if(argv.g) {
+    log('Searching by glass');
+  } else {
+    log('You need to supply a type of glass!');
+  }
+}
+
 
 // log('All of the args', argv);
