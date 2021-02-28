@@ -18,33 +18,53 @@ export interface IngredientsEntity {
   special?: string | null;
 }
 
-const output = (result: Result) => {
+const logOutput = (result: Result):(string | string[])[] => {
+
+  const outputArray = [];
+  const ingredientsArray:string[] = [];
   
   // Name
-  log(`${chalk.magenta.bold("Here's how you make a " + result.name)}`);
+  const drinkName = `Here's how you make a ${result.name}`;
+  log(`${chalk.magenta.bold(drinkName)}`);
+  outputArray.push(drinkName);
 
   // Glass
-  log(`1. Glassware: ${result.glass}`);
+  const glassType = `Glassware: ${result.glass}`;
+  log(glassType);
+  outputArray.push(glassType);
   
   // List ingredients
-  log('2. Mix together:');
+  log('Mix together:');
   result.ingredients?.map(x => {
     if(x.unit) {
-      console.log(`${spacer}${x.amount}${x.unit} of ${x.label || x.ingredient}`);
+      const ingredient = `${x.amount}${x.unit} of ${x.label || x.ingredient}`;
+      console.log(`${spacer}${ingredient}`);
+      ingredientsArray.push(ingredient);
     }
     if(x.special) {
-      console.log(`${spacer}${x.special}`);
+      const special = x.special
+      log(`${spacer}${special}`);
+      ingredientsArray.push(special);
     }
   });
+  outputArray.push(ingredientsArray);
 
   // Preparation
-  log(`3. ${result.preparation}`);
+  const prep = `${result.preparation}`;
+  log(prep);
+  outputArray.push(prep);
 
   // Garnish
-  result.garnish && log(`4. Garnish: ${result.garnish?.toLowerCase()}`);
+  const garnish = `Garnish: ${result.garnish?.toLowerCase()}`;
+  result.garnish && log(garnish);
+  outputArray.push(garnish);
 
   // Finish
-  log('5. Drink up 🥃');
+  const finish = 'Drink up 🥃';
+  log(finish);
+  outputArray.push(finish);
+
+  return outputArray;
 }
 
-export default output;
+export default logOutput;

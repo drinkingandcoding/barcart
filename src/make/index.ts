@@ -1,24 +1,35 @@
 #!/usr/bin/env node
 
 import { data } from '../cocktails';
-import output from './output';
+import logOutput from './output';
 import { getRandomInt } from '../utils/utils';
 
 const log = console.log;
 
-export const makeByName = (input: string) => {
+// todo fix any
+export const makeByName = (input: string):any => {
 
-  const drink = input.toLowerCase();
-  const item = data.find(x => x.name.toLowerCase() === drink);
+  const drinkInput = input.toLowerCase();
+  const recipe = data.find(x => x.name.toLowerCase() === drinkInput);
 
-  if(item) {
-    output(item);
+  if(recipe) {
+    logOutput(recipe);
+    return(recipe);
   } else {
-    log("I don't know that one 😭");
+    const errorString = "I don't know that one 😭";
+    log(errorString);
+    return(errorString);
   }
 };
 
-export const makeRandom = () => {
+// todo fix any
+export const makeRandom = ():any => {
+  
+  const drinkInput = getRandomInt(data.length);
+  const recipe = data[drinkInput];
+
   log('Picking a random cocktail for you!');
-  output(data[getRandomInt(data.length)]);
+  logOutput(recipe);
+  
+  return recipe;
 };
