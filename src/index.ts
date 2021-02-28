@@ -1,34 +1,35 @@
 #!/usr/bin/env node
 
 import yargs from 'yargs'
-import { findByGlass } from './find/find';
-import make from './make/make';
-import random from './make/random';
-const log = console.log;
+import { findByGlass, findByLiquor } from './find';
+import { makeByName, makeRandom } from './make';
+import { getCocktailName } from './utils/utils';
 
 const argv = yargs
   .command('make', 'Learn how to make a cocktail of your choice', {
-    cocktail: {
+    make: {
       description: 'the cocktail to search for',
-      alias: 'm',
       type: 'string',
     }
   })
   .option('random', {
     alias: 'r',
-    description: 'Make a random cocktail',
-    type: 'boolean',
+    description: 'Make a random cocktail'
   })
   .command('find', 'Find cocktails by attribute', {
-    cocktail: {
+    find: {
       description: 'the cocktail to search for',
-      alias: 'f',
       type: 'string',
     }
   })
   .option('glass', {
     alias: 'g',
     description: 'find a cocktail by glassware',
+    type: 'string',
+  })
+  .option('liquor', {
+    alias: 'l',
+    description: 'find a cocktail by liquor',
     type: 'string',
   })
   .help()
@@ -38,27 +39,24 @@ const argv = yargs
 // Make a cocktail
 if (argv._.includes('make')) {
 
-  if(!argv.r) { // Not random, User inputted name
-    let drinkInput = `${argv._[1]}`;
-
-    //check if two word cocktail
-    if(argv._[2]) {
-      drinkInput = `${drinkInput} ${argv._[2]}`;
-    }
-
-    make(drinkInput);
-  } else { // Get a random cocktail
-    random();
-  }
-}
-
-if(argv._.includes('find')) {
-  if(argv.glass) {
-    findByGlass(argv.glass);
+  if(argv.r) {
+    makeRandom();
   } else {
-    log('You need to supply a type of glass!');
+    const input = argv._;
+    makeByName(getCocktailName(input));
   }
 }
 
+// Find a cocktail
+if(argv._.includes('find')) {
+  switch(Object.keys(argv)[1].toString()) {
+    case 'g':
+      argv.glass && findByGlass(argv.glass);
+      break;
+    case 'l':
+      argv.liquor && findByLiquor(argv.liquor);
+      break;
+  }
+}
 
 // log('All of the args', argv);

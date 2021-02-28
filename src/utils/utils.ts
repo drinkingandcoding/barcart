@@ -3,3 +3,13 @@ export const getRandomInt = (max: number) => {
 }
 
 export const spacer = '   - ';
+
+export const getCocktailName = (input: any) => {
+  let drinkInput = `${input[1]}`;
+  //check if two word cocktail
+  if(input[2]) {
+    drinkInput = `${drinkInput} ${input[2]}`;
+  }
+
+  return drinkInput;
+}
