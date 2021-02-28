@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import yargs from 'yargs'
+import { findByGlass } from './find/find';
 import make from './make/make';
 import random from './make/random';
 const log = console.log;
@@ -52,8 +53,8 @@ if (argv._.includes('make')) {
 }
 
 if(argv._.includes('find')) {
-  if(argv.g) {
-    log('Searching by glass');
+  if(argv.glass) {
+    findByGlass(argv.glass);
   } else {
     log('You need to supply a type of glass!');
   }

@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import { spacer } from '../utils/utils';
 const log = console.log;
 
 export interface Result {
@@ -27,7 +28,6 @@ const output = (result: Result) => {
   
   // List ingredients
   log('2. Mix together:');
-  const spacer = '    - ';
   result.ingredients?.map(x => {
     if(x.unit) {
       console.log(`${spacer}${x.amount}${x.unit} of ${x.label || x.ingredient}`);
