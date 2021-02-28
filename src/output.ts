@@ -30,7 +30,7 @@ const output = (result: Result) => {
   const spacer = '    - ';
   result.ingredients?.map(x => {
     if(x.unit) {
-      console.log(`${spacer}${x.amount}${x.unit} of ${x.ingredient}`);
+      console.log(`${spacer}${x.amount}${x.unit} of ${x.label || x.ingredient}`);
     }
     if(x.special) {
       console.log(`${spacer}${x.special}`);
