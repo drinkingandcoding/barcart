@@ -22,10 +22,13 @@ export const findByGlass = (input: string):any => {
   }
 }
 
-export const findByLiquor = (input: string):string => {
+export const findByLiquor = (input: string) => {
+
   if(input) {
-    log(input)
-    return input;
+  let outputArray:string[] = [];
+    data.map(x => x.ingredients?.map(y => y.ingredient?.toLowerCase() === input.toLocaleLowerCase() && outputArray.push(x.name)));
+    outputArray.map(x => console.log(x));
+    return outputArray;
   } else {
     const errorString = `${prefix} liquor!`;
     log(errorString);

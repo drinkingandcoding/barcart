@@ -14,3 +14,10 @@ export const getCocktailName = (input: any):string => {
 
   return drinkInput;
 }
+
+// TODO:
+// all rums return rum
+// whiskey || whiskey returns whiskey
+export const normalizeLiquor = () => {
+
+}
