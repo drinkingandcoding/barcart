@@ -3,7 +3,8 @@
 import { data } from '../cocktails';
 import logMakeOutput from './output';
 import { getRandomInt } from '../utils/utils';
-import { log } from '../utils/logUtils';
+import { log, logBody } from '../utils/logUtils';
+import stringSimilarity from 'string-similarity';
 
 // todo fix any
 export const makeByName = (input:string, amount:number):any => {
@@ -15,8 +16,23 @@ export const makeByName = (input:string, amount:number):any => {
     logMakeOutput(recipe, amount);
     return(recipe);
   } else {
-    const errorString = "I don't know that one 😭";
-    log(errorString);
+    const errorString = "I don't know that one";
+    const similarDrinks:string[] = [];
+    
+    // find similar strings, if above .6, log it
+    data.map(x => {
+      if(stringSimilarity.compareTwoStrings(x.name.toLowerCase(), drinkInput) > .6) {
+        similarDrinks.push(x.name);
+      }
+    });
+
+    // output for similar drinks
+    if(similarDrinks.length) {
+      log(`${errorString}, but I did find some similar drinks:`);
+      similarDrinks.map(x => logBody(x))
+    } else {
+      log(errorString);
+    }
     return(errorString);
   }
 };
