@@ -1,22 +1,7 @@
 import { log, logTitle, logBody } from '../utils/logUtils';
+import { DrinkInterface } from './drinkInterface';
 
-export interface Result {
-  name: string;
-  glass: string;
-  category?: string | null;
-  ingredients?: (IngredientsEntity)[] | null;
-  garnish?: string | null;
-  preparation?: string | null;
-}
-export interface IngredientsEntity {
-  unit?: string | null;
-  amount?: number | null;
-  ingredient?: string | null;
-  label?: string | null;
-  special?: string | null;
-}
-
-const logMakeOutput = (result: Result, inputAmount:number):(string | string[])[] => {
+const logMakeOutput = (result: DrinkInterface, inputAmount:number):(string | string[])[] => {
 
   const outputArray = [];
   const ingredientsArray:string[] = [];
