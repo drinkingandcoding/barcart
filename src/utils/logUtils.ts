@@ -11,5 +11,5 @@ export const logBody = (input: string):void => {
 }
 
 export const log = (input: string):void => {
-  return console.log(input)
+  console.log(input)
 }
