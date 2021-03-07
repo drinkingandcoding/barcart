@@ -28,7 +28,7 @@ Liquors are normalized, this means that:
 
 ## Usage
 
-All functions should return the array declared in [drinkInterfaces](https://github.com/drinkingandcoding/barcart/blob/main/src/interfaces/drinkInterface.ts)
+All functions should return an array of objects declared in [drinkInterfaces](https://github.com/drinkingandcoding/barcart/blob/main/src/interfaces/drinkInterface.ts)
 
 ### Make
 ```js

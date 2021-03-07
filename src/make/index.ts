@@ -7,14 +7,14 @@ import { log, logBody } from '../utils/logUtils';
 import stringSimilarity from 'string-similarity';
 import { DrinkInterface } from '../interfaces/drinkInterface';
 
-export const makeByName = (input:string, amount:number):DrinkInterface|DrinkInterface[] => {
+export const makeByName = (input:string, amount:number):DrinkInterface[] => {
 
   const drinkInput = input.toLowerCase();
   const recipe = data.find(x => x.name.toLowerCase() === drinkInput);
 
   if(recipe) {
     logMakeOutput(recipe, amount);
-    return(recipe);
+    return(Array(recipe));
   } else {
     const errorString = "I don't know that one";
     const similarDrinkReceipes:DrinkInterface[] = [];
@@ -37,7 +37,7 @@ export const makeByName = (input:string, amount:number):DrinkInterface|DrinkInte
   }
 };
 
-export const makeByRandom = (amount:number):DrinkInterface => {
+export const makeByRandom = (amount:number):DrinkInterface[] => {
   
   const drinkInput = getRandomInt(data.length);
   const recipe = data[drinkInput];
@@ -45,5 +45,5 @@ export const makeByRandom = (amount:number):DrinkInterface => {
   log('✨ Picking a random cocktail for you! ✨');
   logMakeOutput(recipe, amount);
   
-  return recipe;
+  return Array(recipe);
 };
