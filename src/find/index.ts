@@ -21,17 +21,17 @@ export const findByGlass = (input: string):DrinkInterface[] => {
   }
 }
 
-export const findByLiquor = (input: string):string[] => {
+export const findByLiquor = (input: string):DrinkInterface[] => {
   if(input) {
-    const drinkArray:string[] = [];
+    const drinkArray:DrinkInterface[] = [];
 
     // Check the entire list of ingredients (normalized) and push to new array if found
-    data.map(drink => drink.ingredients?.map(ingredientList => ingredientList.ingredient && (normalizeLiquor(ingredientList.ingredient) === normalizeLiquor(input)) && drinkArray.push(drink.name)));
+    data.map(drink => drink.ingredients?.map(ingredientList => ingredientList.ingredient && (normalizeLiquor(ingredientList.ingredient) === normalizeLiquor(input)) && drinkArray.push(drink)));
 
     // The array of found pushes every time it is found, so dedupe list before logging
     const dedeupeDrinkArray = [ ...new Set(drinkArray) ];
     if(drinkArray.length) {
-      dedeupeDrinkArray.map(drink => log(drink));
+      dedeupeDrinkArray.map(drink => log(drink.name));
     } else {
       log('No drinks found');
     }
@@ -43,9 +43,9 @@ export const findByLiquor = (input: string):string[] => {
   }
 };
 
-export const findByIngredients = (input: string[]):string[] => {
+export const findByIngredients = (input: string[]):DrinkInterface[] => {
   const inputArrayWithoutHyphens:string[] = [];
-  const outputArray:string[] = [];
+  const outputArray:DrinkInterface[] = [];
 
   input.map(ingredient => {
     const ref = ingredient.replace("-", " ");
@@ -59,12 +59,12 @@ export const findByIngredients = (input: string[]):string[] => {
         ingredientArray.push(normalizeLiquor(ingredientList.ingredient));
       }
     })
-    ingredientArray.every(i => inputArrayWithoutHyphens.includes(i)) && outputArray.push(drink.name);
+    ingredientArray.every(i => inputArrayWithoutHyphens.includes(i)) && outputArray.push(drink);
   });
 
   logTitle(`Using these ingredients:`);
   inputArrayWithoutHyphens.map(d => logBody(capitalizeFirstLetter(d)));
   logTitle(`\n You can make:`);
-  outputArray.map(d => logBody(d));
+  outputArray.map(drink => logBody(drink.name));
   return outputArray;
 }

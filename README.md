@@ -28,6 +28,8 @@ Liquors are normalized, this means that:
 
 ## Usage
 
+All functions should return the array declared in [drinkInterfaces](https://github.com/drinkingandcoding/barcart/blob/main/src/interfaces/drinkInterface.ts)
+
 ### Make
 ```js
 import { makeByName, makeByRandom } from 'barcart/lib/make';

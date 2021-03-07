@@ -17,23 +17,23 @@ export const makeByName = (input:string, amount:number):DrinkInterface|DrinkInte
     return(recipe);
   } else {
     const errorString = "I don't know that one";
-    const similarDrinks:DrinkInterface[] = [];
+    const similarDrinkReceipes:DrinkInterface[] = [];
     
     // find similar strings, if above .6, log it
     data.map(x => {
       if(stringSimilarity.compareTwoStrings(x.name.toLowerCase(), drinkInput) > .6) {
-        similarDrinks.push(x);
+        similarDrinkReceipes.push(x);
       }
     });
 
     // output for similar drinks
-    if(similarDrinks.length) {
+    if(similarDrinkReceipes.length) {
       log(`${errorString}, but I did find some similar drinks:`);
-      similarDrinks.map(x => logBody(x.name))
+      similarDrinkReceipes.map(drink => logBody(drink.name))
     } else {
       log(errorString);
     }
-    return(similarDrinks);
+    return(similarDrinkReceipes);
   }
 };
 
