@@ -22,7 +22,7 @@ export const makeByName = (input: string):any => {
 };
 
 // todo fix any
-export const makeRandom = ():any => {
+export const makeByRandom = ():any => {
   
   const drinkInput = getRandomInt(data.length);
   const recipe = data[drinkInput];

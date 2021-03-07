@@ -2,7 +2,7 @@
 
 import yargs from 'yargs'
 import { findByGlass, findByLiquor } from './find';
-import { makeByName, makeRandom } from './make';
+import { makeByName, makeByRandom } from './make';
 import { getCocktailName } from './utils/utils';
 
 const argv = yargs
@@ -40,7 +40,7 @@ const argv = yargs
 if (argv._.includes('make')) {
 
   if(argv.r) {
-    makeRandom();
+    makeByRandom();
   } else {
     const input = argv._;
     makeByName(getCocktailName(input));
