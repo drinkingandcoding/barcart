@@ -18,6 +18,17 @@ export const getCocktailName = (input: any):string => {
 // TODO:
 // all rums return rum
 // whiskey || whiskey returns whiskey
-export const normalizeLiquor = () => {
+export const normalizeLiquor = (input: string):string => {
+  
+  let drinkInput = input.toLowerCase();
+  let normalized: string;
 
+  if(drinkInput === 'whisky' || drinkInput === 'whiskey') {
+    normalized = 'whiskey';
+  } else if(drinkInput.includes('rum')) {
+    normalized = 'rum';
+  } else {
+    normalized = input;
+  }
+  return normalized;
 }

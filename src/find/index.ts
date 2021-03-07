@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import { data } from '../cocktails';
-import { spacer } from '../utils/utils';
+import { spacer, normalizeLiquor } from '../utils/utils';
 const log = console.log;
 const prefix = 'You need to supply a type of';
 
@@ -23,12 +23,20 @@ export const findByGlass = (input: string):any => {
 }
 
 export const findByLiquor = (input: string) => {
-
   if(input) {
-  let outputArray:string[] = [];
-    data.map(x => x.ingredients?.map(y => y.ingredient?.toLowerCase() === input.toLocaleLowerCase() && outputArray.push(x.name)));
-    outputArray.map(x => console.log(x));
-    return outputArray;
+    let drinkArray:string[] = [];
+
+    // Check the entire list of ingredients (normalized) and push to new array if found
+    data.map(drink => drink.ingredients?.map(ingredientList => ingredientList.ingredient && (normalizeLiquor(ingredientList.ingredient) === normalizeLiquor(input)) && drinkArray.push(drink.name)));
+
+    // The array of found pushes every time it is found, so dedupe list before logging
+    const dedeupeDrinkArray = [ ...new Set(drinkArray) ];
+    if(drinkArray.length) {
+      dedeupeDrinkArray.map(drink => log(drink));
+    } else {
+      log('No drinks found');
+    }
+    return dedeupeDrinkArray;
   } else {
     const errorString = `${prefix} liquor!`;
     log(errorString);
