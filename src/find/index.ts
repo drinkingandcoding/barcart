@@ -4,7 +4,7 @@ import { capitalizeFirstLetter, normalizeLiquor } from '../utils/utils';
 const prefix = 'You need to supply a type of';
 
 // todo fix any
-export const findByGlass = (input: string) => {
+export const findByGlass = (input: string):(string|any[]) => {
   if(input) {
     const drinks = data.filter(x => x.glass === input);
     if(drinks.length) {
@@ -21,7 +21,7 @@ export const findByGlass = (input: string) => {
   }
 }
 
-export const findByLiquor = (input: string) => {
+export const findByLiquor = (input: string):(string|string[]) => {
   if(input) {
     const drinkArray:string[] = [];
 
@@ -43,17 +43,17 @@ export const findByLiquor = (input: string) => {
   }
 };
 
-export const findByIngredients = (input: any[]) => {
-  let inputArrayWithoutHyphens:string[] = [];
-  let outputArray:string[] = [];
+export const findByIngredients = (input: any[]):string[] => {
+  const inputArrayWithoutHyphens:string[] = [];
+  const outputArray:string[] = [];
 
   input.map(ingredient => {
-    let ref = ingredient.replace("-", " ");
+    const ref = ingredient.replace("-", " ");
     inputArrayWithoutHyphens.push(ref);
   });
 
   data.map(drink => {
-    let ingredientArray:any[] = [];
+    const ingredientArray:string[] = [];
     drink.ingredients?.map(ingredientList => {
       if (ingredientList.ingredient){
         ingredientArray.push(normalizeLiquor(ingredientList.ingredient));

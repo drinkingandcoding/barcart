@@ -66,4 +66,4 @@ if(argv._.includes('find')) {
   }
 }
 
-// console.log('All of the args', argv);
+console.log('All of the args', argv);

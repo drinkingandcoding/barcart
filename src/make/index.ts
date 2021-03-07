@@ -6,7 +6,7 @@ import { getRandomInt } from '../utils/utils';
 import { log } from '../utils/logUtils';
 
 // todo fix any
-export const makeByName = (input: string):any => {
+export const makeByName = (input:string):any => {
 
   const drinkInput = input.toLowerCase();
   const recipe = data.find(x => x.name.toLowerCase() === drinkInput);
