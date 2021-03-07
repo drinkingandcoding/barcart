@@ -2,8 +2,6 @@ export const getRandomInt = (max: number):number => {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-export const spacer = '   - ';
-
 // todo fix any
 export const getCocktailName = (input: any):string => {
   let drinkInput = `${input[1]}`;

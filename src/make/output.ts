@@ -1,6 +1,4 @@
-import chalk from 'chalk';
-import { spacer } from '../utils/utils';
-const log = console.log;
+import { log, logTitle, logBody } from '../utils/logUtils';
 
 export interface Result {
   name: string;
@@ -18,14 +16,14 @@ export interface IngredientsEntity {
   special?: string | null;
 }
 
-const logOutput = (result: Result):(string | string[])[] => {
+const logMakeOutput = (result: Result):(string | string[])[] => {
 
   const outputArray = [];
   const ingredientsArray:string[] = [];
   
   // Name
   const drinkName = `Here's how you make a ${result.name}`;
-  log(`${chalk.magenta.bold(drinkName)}`);
+  logTitle(drinkName);
   outputArray.push(drinkName);
 
   // Glass
@@ -38,12 +36,12 @@ const logOutput = (result: Result):(string | string[])[] => {
   result.ingredients?.map(x => {
     if(x.unit) {
       const ingredient = `${x.amount}${x.unit} of ${x.label || x.ingredient}`;
-      console.log(`${spacer}${ingredient}`);
+      logBody(ingredient);
       ingredientsArray.push(ingredient);
     }
     if(x.special) {
       const special = x.special
-      log(`${spacer}${special}`);
+      logBody(special);
       ingredientsArray.push(special);
     }
   });
@@ -67,4 +65,4 @@ const logOutput = (result: Result):(string | string[])[] => {
   return outputArray;
 }
 
-export default logOutput;
+export default logMakeOutput;
