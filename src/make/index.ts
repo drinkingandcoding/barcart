@@ -5,9 +5,8 @@ import logMakeOutput from './output';
 import { getRandomInt } from '../utils/utils';
 import { log, logBody } from '../utils/logUtils';
 import stringSimilarity from 'string-similarity';
-import { DrinkInterface } from './drinkInterface';
+import { DrinkInterface } from '../interfaces/drinkInterface';
 
-// todo fix any
 export const makeByName = (input:string, amount:number):DrinkInterface|DrinkInterface[] => {
 
   const drinkInput = input.toLowerCase();
@@ -38,7 +37,6 @@ export const makeByName = (input:string, amount:number):DrinkInterface|DrinkInte
   }
 };
 
-// todo fix any
 export const makeByRandom = (amount:number):DrinkInterface => {
   
   const drinkInput = getRandomInt(data.length);

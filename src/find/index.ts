@@ -1,10 +1,10 @@
 import { data } from '../cocktails';
 import { log, logBody, logTitle } from '../utils/logUtils';
 import { capitalizeFirstLetter, normalizeLiquor } from '../utils/utils';
+import { DrinkInterface } from '../interfaces/drinkInterface';
 const prefix = 'You need to supply a type of';
 
-// todo fix any
-export const findByGlass = (input: string):(string|any[]) => {
+export const findByGlass = (input: string):DrinkInterface[] => {
   if(input) {
     const drinks = data.filter(x => x.glass === input);
     if(drinks.length) {
@@ -17,11 +17,11 @@ export const findByGlass = (input: string):(string|any[]) => {
   } else {
     const errorString = `${prefix} glass!`;
     log(errorString);
-    return errorString;
+    return [];
   }
 }
 
-export const findByLiquor = (input: string):(string|string[]) => {
+export const findByLiquor = (input: string):string[] => {
   if(input) {
     const drinkArray:string[] = [];
 
@@ -39,11 +39,11 @@ export const findByLiquor = (input: string):(string|string[]) => {
   } else {
     const errorString = `${prefix} liquor!`;
     log(errorString);
-    return errorString;
+    return [];
   }
 };
 
-export const findByIngredients = (input: any[]):string[] => {
+export const findByIngredients = (input: string[]):string[] => {
   const inputArrayWithoutHyphens:string[] = [];
   const outputArray:string[] = [];
 

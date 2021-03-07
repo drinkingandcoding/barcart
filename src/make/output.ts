@@ -1,5 +1,5 @@
 import { log, logTitle, logBody } from '../utils/logUtils';
-import { DrinkInterface } from './drinkInterface';
+import { DrinkInterface } from '../interfaces/drinkInterface';
 
 const logMakeOutput = (result: DrinkInterface, inputAmount:number):(string | string[])[] => {
 

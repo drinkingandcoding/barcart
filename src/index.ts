@@ -67,8 +67,9 @@ if(argv._.includes('find')) {
       argv.liquor && findByLiquor(argv.liquor);
       break;
     case 'i':
-      argv.ingredients && findByIngredients(argv.ingredients);
+      argv.ingredients && findByIngredients(argv.ingredients.map(String));
   }
 }
 
+// Debug with this
 // console.log('All of the args', argv);
