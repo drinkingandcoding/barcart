@@ -37,8 +37,9 @@ const bar = makeByRandom();
 
 ### Find
 ```js
-import { findByGlass, findByLiquor } from 'barcart/lib/find';
+import { findByGlass, findByLiquor, findByIngredients } from 'barcart/lib/find';
 
 const foo = findByGlass('martini');
 const bar = findByLiquor('rum');
+const baz = findByIngredients(['vodka', 'orange juice']);
 ```
