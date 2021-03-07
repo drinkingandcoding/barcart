@@ -5,7 +5,7 @@ const log = console.log;
 const prefix = 'You need to supply a type of';
 
 // todo fix any
-export const findByGlass = (input: string):any => {
+export const findByGlass = (input: string) => {
   if(input) {
     const drinks = data.filter(x => x.glass === input);
     if(drinks.length) {
@@ -24,7 +24,7 @@ export const findByGlass = (input: string):any => {
 
 export const findByLiquor = (input: string) => {
   if(input) {
-    let drinkArray:string[] = [];
+    const drinkArray:string[] = [];
 
     // Check the entire list of ingredients (normalized) and push to new array if found
     data.map(drink => drink.ingredients?.map(ingredientList => ingredientList.ingredient && (normalizeLiquor(ingredientList.ingredient) === normalizeLiquor(input)) && drinkArray.push(drink.name)));
