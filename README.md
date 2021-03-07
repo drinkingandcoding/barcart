@@ -12,6 +12,7 @@ Everything you need to make drinks from your CLI
 
 ### Make
 * List instructions based on a drink name: `barcart make manhattan`
+* List instructions based on a drink name (with amount): `barcart make manhattan -a 2` (this is two drinks)
 * List instructions for random drinks: `barcart make -r`
 
 ### Find

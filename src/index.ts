@@ -16,6 +16,11 @@ const argv = yargs
     alias: 'r',
     description: 'Make a random cocktail'
   })
+  .option('amount', {
+    alias: 'a',
+    description: 'Make amount of a cocktail',
+    type: 'number'
+  })
   .command('find', 'Find cocktails by attribute', {
     find: {
       description: 'the cocktail to search for',
@@ -24,17 +29,17 @@ const argv = yargs
   })
   .option('glass', {
     alias: 'g',
-    description: 'find a cocktail by glassware',
+    description: 'Find a cocktail by glassware',
     type: 'string',
   })
   .option('liquor', {
     alias: 'l',
-    description: 'find a cocktail by liquor',
+    description: 'Find a cocktail by liquor',
     type: 'string',
   })
   .options('ingredients', {
     alias: 'i',
-    description: 'find a cocktail by ingredients',
+    description: 'Find a cocktail by ingredients',
     type: 'array',
   })
   .help()
@@ -45,10 +50,10 @@ const argv = yargs
 if (argv._.includes('make')) {
 
   if(argv.r) {
-    makeByRandom();
+    makeByRandom(argv.amount ? argv.amount : 1);
   } else {
     const input = argv._;
-    makeByName(getCocktailName(input));
+    makeByName(getCocktailName(input), argv.amount ? argv.amount : 1);
   }
 }
 
@@ -66,4 +71,4 @@ if(argv._.includes('find')) {
   }
 }
 
-console.log('All of the args', argv);
+// console.log('All of the args', argv);

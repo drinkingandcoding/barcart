@@ -16,13 +16,14 @@ export interface IngredientsEntity {
   special?: string | null;
 }
 
-const logMakeOutput = (result: Result):(string | string[])[] => {
+const logMakeOutput = (result: Result, inputAmount:number):(string | string[])[] => {
 
   const outputArray = [];
   const ingredientsArray:string[] = [];
   
   // Name
-  const drinkName = `Here's how you make a ${result.name}`;
+  const drinkName = `Here's how you make ${inputAmount > 1 ? `${inputAmount} ${result.name}s` : `a ${result.name}`}`;
+
   logTitle(drinkName);
   outputArray.push(drinkName);
 
@@ -35,7 +36,8 @@ const logMakeOutput = (result: Result):(string | string[])[] => {
   log('Mix together:');
   result.ingredients?.map(x => {
     if(x.unit) {
-      const ingredient = `${x.amount}${x.unit} of ${x.label || x.ingredient}`;
+      const amounts = x.amount && (x.amount * inputAmount)
+      const ingredient = `${amounts}${x.unit} of ${x.label || x.ingredient}`;
       logBody(ingredient);
       ingredientsArray.push(ingredient);
     }
