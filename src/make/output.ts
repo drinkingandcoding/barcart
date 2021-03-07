@@ -1,7 +1,7 @@
 import { log, logTitle, logBody } from '../utils/logUtils';
 import { DrinkInterface } from '../interfaces/drinkInterface';
 
-const logMakeOutput = (result: DrinkInterface, inputAmount:number):(string | string[])[] => {
+const logMakeOutput = (result: DrinkInterface, inputAmount:number):void => {
 
   const outputArray = [];
   const ingredientsArray:string[] = [];
@@ -48,8 +48,6 @@ const logMakeOutput = (result: DrinkInterface, inputAmount:number):(string | str
   const finish = 'Drink up 🥃';
   log(finish);
   outputArray.push(finish);
-
-  return outputArray;
 }
 
 export default logMakeOutput;
