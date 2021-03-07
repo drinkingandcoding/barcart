@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import yargs from 'yargs'
-import { findByGlass, findByLiquor } from './find';
+import { findByGlass, findByLiquor, findByIngredients } from './find';
 import { makeByName, makeByRandom } from './make';
 import { getCocktailName } from './utils/utils';
 
@@ -32,6 +32,11 @@ const argv = yargs
     description: 'find a cocktail by liquor',
     type: 'string',
   })
+  .options('ingredients', {
+    alias: 'i',
+    description: 'find a cocktail by ingredients',
+    type: 'array',
+  })
   .help()
   .alias('help', 'h')
   .argv;
@@ -56,7 +61,9 @@ if(argv._.includes('find')) {
     case 'l':
       argv.liquor && findByLiquor(argv.liquor);
       break;
+    case 'i':
+      argv.ingredients && findByIngredients(argv.ingredients);
   }
 }
 
-// log('All of the args', argv);
+// console.log('All of the args', argv);

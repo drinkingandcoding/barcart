@@ -1,6 +1,6 @@
 import { data } from '../cocktails';
 import { log, logBody, logTitle } from '../utils/logUtils';
-import { normalizeLiquor } from '../utils/utils';
+import { capitalizeFirstLetter, normalizeLiquor } from '../utils/utils';
 const prefix = 'You need to supply a type of';
 
 // todo fix any
@@ -42,3 +42,29 @@ export const findByLiquor = (input: string) => {
     return errorString;
   }
 };
+
+export const findByIngredients = (input: any[]) => {
+  let inputArrayWithoutHyphens:string[] = [];
+  let outputArray:string[] = [];
+
+  input.map(ingredient => {
+    let ref = ingredient.replace("-", " ");
+    inputArrayWithoutHyphens.push(ref);
+  });
+
+  data.map(drink => {
+    let ingredientArray:any[] = [];
+    drink.ingredients?.map(ingredientList => {
+      if (ingredientList.ingredient){
+        ingredientArray.push(normalizeLiquor(ingredientList.ingredient));
+      }
+    })
+    ingredientArray.every(i => inputArrayWithoutHyphens.includes(i)) && outputArray.push(drink.name);
+  });
+
+  logTitle(`Using these ingredients:`);
+  inputArrayWithoutHyphens.map(d => logBody(capitalizeFirstLetter(d)));
+  logTitle(`\n You can make:`);
+  outputArray.map(d => logBody(d));
+  return outputArray;
+}

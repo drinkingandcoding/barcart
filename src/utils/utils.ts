@@ -23,7 +23,11 @@ export const normalizeLiquor = (input: string):string => {
   } else if(drinkInput.includes('rum')) {
     normalized = 'rum';
   } else {
-    normalized = input;
+    normalized = input.toLowerCase();
   }
   return normalized;
+}
+
+export function capitalizeFirstLetter(string:string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }

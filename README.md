@@ -11,12 +11,13 @@ Everything you need to make drinks from your CLI
 ## CLI commands
 
 ### Make
-* List instructions based on a drink name: `barcart make ${drinkName}`
+* List instructions based on a drink name: `barcart make manhattan`
 * List instructions for random drinks: `barcart make -r`
 
 ### Find
-* List drinks based on glassware: `barcart find -g ${glassware}`
-* List drinks based on liquor: `barcart find -l ${liquor}`
+* List drinks based on glassware: `barcart find -g martini`
+* List drinks based on liquor: `barcart find -l rum`
+* List drinks based on ingredients: `barcart find -i vodka orange-juice`
 
 #### Notes:
 Liquors are normalized, this means that:
