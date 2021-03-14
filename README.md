@@ -3,8 +3,8 @@
 Everything you need to make drinks from your CLI
 
 ## run locally
-* `npm install`
-* `npm run build`
+* `yarn install`
+* `yarn build`
 
 ## Usage
 
