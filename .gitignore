@@ -5,6 +5,12 @@ npm-debug.log*
 
 # Built files
 lib
+dist
+index.d.ts
+index.js
 
 # Node modules
 node_modules
+
+## Mac
+.DS_Store
