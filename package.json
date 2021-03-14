@@ -1,6 +1,6 @@
 {
   "name": "barcart",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "find cocktails based on what you have",
   "main": "index.js",
   "scripts": {
