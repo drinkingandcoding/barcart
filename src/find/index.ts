@@ -1,7 +1,6 @@
 import { data } from '../cocktails';
 import { normalizeLiquor } from '../utils';
 import { DrinkInterface } from '../interfaces/drinkInterface';
-const prefix = 'You need to supply a type of';
 
 export const findByGlass = (input: string):DrinkInterface[] => {
   if(input) {

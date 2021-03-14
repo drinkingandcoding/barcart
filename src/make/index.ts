@@ -3,7 +3,7 @@ import { getRandomInt } from '../utils';
 import stringSimilarity from 'string-similarity';
 import { DrinkInterface } from '../interfaces/drinkInterface';
 
-export const makeByName = (input:string, amount:number):DrinkInterface[] => {
+export const makeByName = (input: string):DrinkInterface[] => {
 
   const drinkInput = input.toLowerCase();
   const recipe = data.find(x => x.name.toLowerCase() === drinkInput);
@@ -23,7 +23,7 @@ export const makeByName = (input:string, amount:number):DrinkInterface[] => {
   }
 };
 
-export const makeByRandom = (amount:number):DrinkInterface[] => {
+export const makeByRandom = ():DrinkInterface[] => {
   const drinkInput = getRandomInt(data.length);
   const recipe = data[drinkInput];  
   return Array(recipe);
