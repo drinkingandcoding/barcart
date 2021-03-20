@@ -11,15 +11,7 @@ export const makeByName = (input: string):DrinkInterface[] => {
   if(recipe) {
     return(Array(recipe));
   } else {
-    const similarDrinkReceipes:DrinkInterface[] = [];
-    
-    // find similar strings, if above .6, log it
-    data.map(x => {
-      if(stringSimilarity.compareTwoStrings(x.name.toLowerCase(), drinkInput) > .6) {
-        similarDrinkReceipes.push(x);
-      }
-    });
-    return(similarDrinkReceipes);
+    return [];
   }
 };
 

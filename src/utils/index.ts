@@ -1,3 +1,7 @@
+import { data } from '../cocktails';
+import stringSimilarity from 'string-similarity';
+import { DrinkInterface } from '../interfaces/drinkInterface';
+
 export const getRandomInt = (max: number):number => {
   return Math.floor(Math.random() * Math.floor(max));
 }
@@ -27,6 +31,25 @@ export const normalizeLiquor = (input: string):string => {
   return normalized;
 }
 
-export function capitalizeFirstLetter(string:string):string {
+export const capitalizeFirstLetter = (string:string):string => {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export const findSimilarDrinks = (input: string):DrinkInterface[] => {
+
+  const drinkInput = input.toLowerCase();
+  const similarDrinkReceipes:DrinkInterface[] = [];
+    
+  // find similar strings, if above .6, log it
+  data.map(x => {
+    if(stringSimilarity.compareTwoStrings(x.name.toLowerCase(), drinkInput) > .6) {
+      similarDrinkReceipes.push(x);
+    }
+  });
+
+  if(similarDrinkReceipes.length) {
+    return(similarDrinkReceipes);
+  } else {
+    return [];
+  }
 }
