@@ -4,7 +4,7 @@ import { DrinkInterface } from '../interfaces/drinkInterface';
 
 export const findByGlass = (input: string):DrinkInterface[] => {
   if(input) {
-    const drinks = data.filter(x => x.glass === input);
+    const drinks = data.filter(x => x.glass.toLowerCase() === input.toLowerCase());
     return drinks;
   } else {
     return [];
@@ -14,7 +14,6 @@ export const findByGlass = (input: string):DrinkInterface[] => {
 export const findByLiquor = (input: string):DrinkInterface[] => {
   if(input) {
     const drinkArray:DrinkInterface[] = [];
-
     // Check the entire list of ingredients (normalized) and push to new array if found
     data.map(drink => drink.ingredients?.map(ingredientList => ingredientList.ingredient && (normalizeLiquor(ingredientList.ingredient) === normalizeLiquor(input)) && drinkArray.push(drink)));
 
@@ -32,7 +31,7 @@ export const findByIngredients = (input: string[]):DrinkInterface[] => {
 
   input.map(ingredient => {
     const ref = ingredient.replace("-", " ");
-    inputArrayWithoutHyphens.push(ref);
+    inputArrayWithoutHyphens.push(ref.toLowerCase());
   });
 
   data.map(drink => {
