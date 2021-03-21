@@ -1,6 +1,5 @@
 import { data } from '../cocktails';
 import { getRandomInt } from '../utils';
-import stringSimilarity from 'string-similarity';
 import { DrinkInterface } from '../interfaces/drinkInterface';
 
 export const makeByName = (input: string):DrinkInterface[] => {
